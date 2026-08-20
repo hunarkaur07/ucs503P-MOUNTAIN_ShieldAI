@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MountainShield AI - Disaster Response & Multi-Agent System</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+  <!-- ================= SIDEBAR ================= -->
+
+  <aside class="sidebar">
+
+    <div class="sidebar-header">
+
+      <div class="logo-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M8 3l4 8 5-5 5 15H2L8 3z"></path>
+        </svg>
+      </div>
+
+      <div class="brand-text">
+        <h2>Mountain<span>Shield</span></h2>
+        <p>AI Hazard Grid</p>
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <ul>
+
+        <li class="active">
+          <a href="#">
+            <span class="nav-icon">📊</span>
+            <span>Overview</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="nav-icon">⚡</span>
+            <span>Active Units</span>
+            <span class="badge count">5</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="nav-icon">⚠️</span>
+            <span>Live Hazards</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="nav-icon">📡</span>
+            <span>Telemetry Grid</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="nav-icon">🗺️</span>
+            <span>Evac Routes</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="nav-icon">⚙️</span>
+            <span>Settings</span>
+          </a>
+        </li>
+
+      </ul>
+
+    </nav>
+
+
+    <div class="sidebar-footer">
+
+      <div class="grid-status">
+
+        <span class="status-dot pulsing"></span>
+
+        <div>
+          <p class="status-title">Satellite Uplink</p>
+          <p class="status-sub">Connected (99.8% sync)</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ================= MAIN CONTENT ================= -->
+
+  <div class="main-wrapper">
+
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+      <div class="header-left">
+
+        <h1 class="page-title">
+          Disaster Response & Multi-Agent Operations
+        </h1>
+
+        <p class="sub-greeting">
+          Real-time mountain landslide & seismic intelligence system
+        </p>
+
+      </div>
+
+
+      <div class="header-right">
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            placeholder="Search sectors, alerts, coordinates..."
+          >
+        </div>
+
+
+        <div class="threat-level">
+
+          <span class="threat-dot"></span>
+
+          <span>
+            Alert Level:
+            <strong>LOW RISK</strong>
+          </span>
+
+        </div>
+
+
+        <div class="system-status-pill">
+          <span class="status-chip">Sector Alpha</span>
+        </div>
+
+      </div>
+
+    </header>
+
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <main class="dashboard-content">
+
+
+      <!-- QUICK METRICS -->
+
+      <section class="metrics-banner">
+
+
+        <div class="metric-card">
+
+          <div class="metric-icon">🏔️</div>
+
+          <div class="metric-details">
+
+            <h3>Monitored Sectors</h3>
+
+            <p class="metric-value">
+              12 / 12 Active
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="metric-card">
+
+          <div class="metric-icon">🤖</div>
+
+          <div class="metric-details">
+
+            <h3>System Units</h3>
+
+            <p class="metric-value">
+              4 Online
+              <span class="sub-text">/ 1 Standby</span>
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- CURRENT RISK -->
+
+        <div class="metric-card">
+
+          <div class="metric-icon">⚡</div>
+
+          <div class="metric-details">
+
+            <h3>Current Landslide Risk</h3>
+
+            <p
+              class="metric-value color-safe"
+              id="current-risk"
+            >
+              Loading...
+            </p>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="metric-card">
+
+          <div class="metric-icon">🕒</div>
+
+          <div class="metric-details">
+
+            <h3>Last Telemetry Sync</h3>
+
+            <p class="metric-value">
+              2 mins ago
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ================= AGENT CARDS ================= -->
+
+      <section class="agents-section">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <h2>Autonomous Fleet Status</h2>
+
+            <p>
+              Live status of autonomous monitoring and response modules
+            </p>
+
+          </div>
+
+          <span class="agents-total-badge">
+            5 Assigned Units
+          </span>
+
+        </div>
+
+
+
+        <div class="agents-grid">
+
+
+          <!-- HAZARD -->
+
+          <div class="agent-card">
+
+            <div class="agent-card-header">
+
+              <div class="agent-avatar-wrap">
+
+                <img
+                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&auto=format&fit=crop&q=80"
+                  alt="Hazard Radar"
+                  class="agent-img"
+                >
+
+                <span class="online-indicator active"></span>
+
+              </div>
+
+
+              <div class="agent-title-info">
+
+                <div class="agent-badge badge-online">
+                  ● ONLINE
+                </div>
+
+                <h3 class="agent-name">
+                  Hazard Prediction
+                </h3>
+
+                <span class="agent-role">
+                  Landslides & Terrain Shifts
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="agent-card-footer">
+
+              <span class="health-text">
+                ⚡ 99.4% Radar Sync
+              </span>
+
+              <span class="unit-status-tag">
+                Active
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- COMMUNITY -->
+
+          <div class="agent-card">
+
+            <div class="agent-card-header">
+
+              <div class="agent-avatar-wrap">
+
+                <img
+                  src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=200&auto=format&fit=crop&q=80"
+                  alt="Community Comms"
+                  class="agent-img"
+                >
+
+                <span class="online-indicator active"></span>
+
+              </div>
+
+
+              <div class="agent-title-info">
+
+                <div class="agent-badge badge-online">
+                  ● ONLINE
+                </div>
+
+                <h3 class="agent-name">
+                  Community Reporter
+                </h3>
+
+                <span class="agent-role">
+                  Field & Incident Feeds
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="agent-card-footer">
+
+              <span class="health-text">
+                ⚡ 18 Reports Synced
+              </span>
+
+              <span class="unit-status-tag">
+                Active
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- NETWORK -->
+
+          <div class="agent-card">
+
+            <div class="agent-card-header">
+
+              <div class="agent-avatar-wrap">
+
+                <img
+                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=200&auto=format&fit=crop&q=80"
+                  alt="Route Map"
+                  class="agent-img"
+                >
+
+                <span class="online-indicator active"></span>
+
+              </div>
+
+
+              <div class="agent-title-info">
+
+                <div class="agent-badge badge-online">
+                  ● ONLINE
+                </div>
+
+                <h3 class="agent-name">
+                  Network Analyst
+                </h3>
+
+                <span class="agent-role">
+                  Passes & Route Routing
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="agent-card-footer">
+
+              <span class="health-text">
+                ⚡ 9 Routes Safe
+              </span>
+
+              <span class="unit-status-tag">
+                Active
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- RESCUE -->
+
+          <div class="agent-card">
+
+            <div class="agent-card-header">
+
+              <div class="agent-avatar-wrap">
+
+                <img
+                  src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=200&auto=format&fit=crop&q=80"
+                  alt="Rescue Operations"
+                  class="agent-img"
+                >
+
+                <span class="online-indicator active"></span>
+
+              </div>
+
+
+              <div class="agent-title-info">
+
+                <div class="agent-badge badge-online">
+                  ● ONLINE
+                </div>
+
+                <h3 class="agent-name">
+                  Rescue Coordinator
+                </h3>
+
+                <span class="agent-role">
+                  Emergency Dispatch Grid
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="agent-card-footer">
+
+              <span class="health-text">
+                ⚡ SAR Helipad Ready
+              </span>
+
+              <span class="unit-status-tag">
+                Active
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- MISINFORMATION -->
+
+          <div class="agent-card">
+
+            <div class="agent-card-header">
+
+              <div class="agent-avatar-wrap">
+
+                <img
+                  src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=200&auto=format&fit=crop&q=80"
+                  alt="Data Security"
+                  class="agent-img"
+                >
+
+                <span class="online-indicator standby"></span>
+
+              </div>
+
+
+              <div class="agent-title-info">
+
+                <div class="agent-badge badge-offline">
+                  ○ STANDBY
+                </div>
+
+                <h3 class="agent-name">
+                  Misinformation Filter
+                </h3>
+
+                <span class="agent-role">
+                  Data Verification Shield
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="agent-card-footer">
+
+              <span class="health-text">
+                ⚡ 99.7% Trust Index
+              </span>
+
+              <span class="unit-status-tag standby">
+                Standby
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ================= LANDSLIDE CHART ================= -->
+
+      <section class="chart-section-end">
+
+
+        <div class="dashboard-panel full-chart-panel">
+
+
+          <div class="panel-header">
+
+
+            <div>
+
+              <div class="chart-title-wrap">
+
+                <h3>
+                  Landslide Risk Over Time (Last 24 Hours)
+                </h3>
+
+                <span class="tag-live">
+                  ● LIVE STREAM
+                </span>
+
+              </div>
+
+
+              <p class="panel-subtitle">
+                Real-time risk evaluation curve generated from continuous terrain telemetry
+              </p>
+
+            </div>
+
+
+            <div class="chart-legend">
+
+              <span class="legend-item">
+
+                <span class="legend-dot current"></span>
+
+                Risk Score (%)
+
+              </span>
+
+
+              <span class="legend-item">
+
+                <span class="legend-dot threshold"></span>
+
+                Hazard Threshold (65%)
+
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- ================= SVG CHART ================= -->
+
+          <div class="chart-container-box">
+
+
+            <div class="chart-svg-wrapper">
+
+
+              <svg
+                viewBox="0 0 900 240"
+                class="main-chart-svg"
+                preserveAspectRatio="none"
+              >
+
+
+                <defs>
+
+                  <linearGradient
+                    id="riskAreaGradient"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                  >
+
+                    <stop
+                      offset="0%"
+                      stop-color="#38bdf8"
+                      stop-opacity="0.45"
+                    />
+
+                    <stop
+                      offset="50%"
+                      stop-color="#0284c7"
+                      stop-opacity="0.15"
+                    />
+
+                    <stop
+                      offset="100%"
+                      stop-color="#081224"
+                      stop-opacity="0"
+                    />
+
+                  </linearGradient>
+
+
+                  <linearGradient
+                    id="lineStrokeGradient"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="0"
+                  >
+
+                    <stop
+                      offset="0%"
+                      stop-color="#38bdf8"
+                    />
+
+                    <stop
+                      offset="60%"
+                      stop-color="#60a5fa"
+                    />
+
+                    <stop
+                      offset="100%"
+                      stop-color="#38bdf8"
+                    />
+
+                  </linearGradient>
+
+                </defs>
+
+
+
+                <!-- GRID -->
+
+                <line
+                  x1="40"
+                  y1="30"
+                  x2="880"
+                  y2="30"
+                  class="chart-grid-line"
+                />
+
+                <line
+                  x1="40"
+                  y1="80"
+                  x2="880"
+                  y2="80"
+                  class="chart-grid-line threshold-line"
+                  stroke-dasharray="5,5"
+                />
+
+                <line
+                  x1="40"
+                  y1="130"
+                  x2="880"
+                  y2="130"
+                  class="chart-grid-line"
+                />
+
+                <line
+                  x1="40"
+                  y1="180"
+                  x2="880"
+                  y2="180"
+                  class="chart-grid-line"
+                />
+
+
+                <!-- Y AXIS -->
+
+                <text
+                  x="32"
+                  y="34"
+                  class="axis-label"
+                  text-anchor="end"
+                >
+                  100%
+                </text>
+
+                <text
+                  x="32"
+                  y="84"
+                  class="axis-label alert-text"
+                  text-anchor="end"
+                >
+                  65%
+                </text>
+
+                <text
+                  x="32"
+                  y="134"
+                  class="axis-label"
+                  text-anchor="end"
+                >
+                  40%
+                </text>
+
+                <text
+                  x="32"
+                  y="184"
+                  class="axis-label"
+                  text-anchor="end"
+                >
+                  15%
+                </text>
+
+
+
+                <!-- AREA -->
+
+                <path
+                  class="risk-area"
+                  d="M 50,165
+                     C 140,170 200,120 280,135
+                     C 360,150 420,70 500,90
+                     C 580,110 650,140 720,105
+                     C 790,70 830,130 870,145
+                     L 870,210
+                     L 50,210 Z"
+                  fill="url(#riskAreaGradient)"
+                />
+
+
+
+                <!-- LINE -->
+
+                <path
+                  class="risk-line"
+                  d="M 50,165
+                     C 140,170 200,120 280,135
+                     C 360,150 420,70 500,90
+                     C 580,110 650,140 720,105
+                     C 790,70 830,130 870,145"
+                  fill="none"
+                  stroke="url(#lineStrokeGradient)"
+                  stroke-width="3.5"
+                  stroke-linecap="round"
+                />
+
+
+
+                <!-- POINTS -->
+
+                <g class="chart-point">
+                  <circle cx="50" cy="165" r="4.5" class="point-dot"></circle>
+                </g>
+
+                <g class="chart-point">
+                  <circle cx="280" cy="135" r="4.5" class="point-dot"></circle>
+                </g>
+
+                <g class="chart-point">
+                  <circle cx="500" cy="90" r="5.5" class="point-dot peak"></circle>
+                </g>
+
+                <g class="chart-point">
+                  <circle cx="720" cy="105" r="4.5" class="point-dot"></circle>
+                </g>
+
+                <g class="chart-point">
+                  <circle cx="870" cy="145" r="6" class="point-dot latest"></circle>
+                </g>
+
+
+              </svg>
+
+
+
+              <!-- TIME LABELS -->
+
+              <div class="chart-time-labels">
+
+                <span>00:00</span>
+                <span>04:00</span>
+                <span>08:00</span>
+                <span>12:00</span>
+                <span>16:00</span>
+                <span>20:00</span>
+                <span>Now (Live)</span>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- INTEGRATION FOOTER -->
+
+            <div class="chart-integration-bar">
+
+              <span class="backend-pill">
+                🔌 Person 2 Endpoint:
+                <code>GET /api/mock-hazards</code>
+              </span>
+
+
+              <span class="live-update-text">
+                Current Score:
+                <strong id="chart-current-score">Loading...</strong>
+                <span id="chart-status"></span>
+              </span>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+    </main>
+
+  </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
