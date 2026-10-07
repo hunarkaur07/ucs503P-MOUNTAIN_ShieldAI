@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MountainShieldAI Chat Test</title>
+</head>
+
+<body>
+
+    <h2>WebSocket Chat Test</h2>
+
+    <div>
+        <label>Geofence ID:</label>
+
+        <input
+            type="number"
+            id="geofenceId"
+            value="1"
+        >
+    </div>
+
+    <br>
+
+    <div>
+        <label>User ID:</label>
+
+        <input
+            type="number"
+            id="userId"
+            value="1"
+        >
+
+        <button onclick="connectChat()">
+            Connect
+        </button>
+    </div>
+
+    <br>
+
+    <input
+        type="text"
+        id="messageInput"
+        placeholder="Type a message"
+    >
+
+    <button onclick="sendMessage()">
+        Send
+    </button>
+
+    <h3>Messages</h3>
+
+    <div id="messages"></div>
+
+
+    <script>
+
+        let socket = null;
+
+
+        function connectChat() {
+
+            const geofenceId =
+                document.getElementById(
+                    "geofenceId"
+                ).value;
+
+            const userId =
+                document.getElementById(
+                    "userId"
+                ).value;
+
+
+            if (socket) {
+
+                socket.close();
+
+            }
+
+
+            socket = new WebSocket(
+
+                "ws://127.0.0.1:8000/ws/chat/" +
+                geofenceId +
+                "/" +
+                userId
+
+            );
+
+
+            socket.onopen = function () {
+
+                addMessage(
+                    "Connected as User " +
+                    userId +
+                    " in Geofence " +
+                    geofenceId
+                );
+
+            };
+
+
+            socket.onmessage = function (event) {
+
+                const data =
+                    JSON.parse(event.data);
+
+
+                if (data.type === "message") {
+
+                    addMessage(
+
+                        "User " +
+                        data.user_id +
+                        ": " +
+                        data.message
+
+                    );
+
+                }
+
+
+                else if (data.type === "presence") {
+
+                    addMessage(
+
+                        "User " +
+                        data.user_id +
+                        " is " +
+                        data.status
+
+                    );
+
+                }
+
+
+                else if (data.error) {
+
+                    addMessage(
+                        "Error: " +
+                        data.error
+                    );
+
+                }
+
+            };
+
+
+            socket.onclose = function () {
+
+                addMessage(
+                    "Disconnected from chat"
+                );
+
+            };
+
+
+            socket.onerror = function () {
+
+                addMessage(
+                    "WebSocket connection error"
+                );
+
+            };
+
+        }
+
+
+        function sendMessage() {
+
+            const input =
+                document.getElementById(
+                    "messageInput"
+                );
+
+
+            if (!socket) {
+
+                addMessage(
+                    "Please connect first"
+                );
+
+                return;
+
+            }
+
+
+            if (socket.readyState !== WebSocket.OPEN) {
+
+                addMessage(
+                    "WebSocket is not connected"
+                );
+
+                return;
+
+            }
+
+
+            if (!input.value.trim()) {
+
+                addMessage(
+                    "Message cannot be empty"
+                );
+
+                return;
+
+            }
+
+
+            socket.send(
+
+                JSON.stringify({
+
+                    message: input.value
+
+                })
+
+            );
+
+
+            input.value = "";
+
+        }
+
+
+        function addMessage(message) {
+
+            const messages =
+                document.getElementById(
+                    "messages"
+                );
+
+
+            const paragraph =
+                document.createElement("p");
+
+
+            paragraph.textContent = message;
+
+
+            messages.appendChild(
+                paragraph
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
