@@ -18,6 +18,7 @@ Predicts landslide hazards across Kinnaur, Spiti, and Lahaul using ML models. Fi
 
 **Frontend** 🎨
 - JS + HTML/CSS
+- React + vite
 - Real-time charts & interactive dashboard
 
 **ML** 🤖
